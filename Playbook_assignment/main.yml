@@ -1,0 +1,13 @@
+---
+- name: install webserver
+  hosts: all
+  become: true
+  roles:
+    - install_apache
+    - install_httpd  
+
+
+    
+
+      
+

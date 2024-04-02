@@ -1,0 +1,29 @@
+---
+# tasks file for install_apache
+
+  - name: install apache2
+    apt:
+      name: apache2
+      state: present
+    when: ansible_os_family == 'Debian'
+  - name: start apache2
+    service:
+      name: apache2
+      state: started
+      enabled: true 
+    when: ansible_os_family == 'Debian'
+  - name: restart apache2
+    service:
+      name: apache2
+      state: restarted
+    when: ansible_os_family == 'Debian'
+
+  - name: copy figma page
+    ansible.builtin.copy:
+      src: /home/vagrant/ansible/2-Assignment-2-figma/
+      dest: /var/www/html/
+      owner: root
+      group: root
+      mode: '0644'
+      
+    when: ansible_os_family == 'Debian'
